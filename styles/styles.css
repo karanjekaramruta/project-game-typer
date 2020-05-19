@@ -40,6 +40,7 @@ body{
     margin:1%;
 }
 .letter{
+    margin: 0;
     display:none;
     position:fixed;
     color:navy;

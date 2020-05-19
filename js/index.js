@@ -17,8 +17,18 @@ function calculateAngle(letter){
 
 function move(letter, angle){
 
-    letter.style.left = `${letter.offsetLeft + 20 * Math.cos(Math.abs(angle))}px`;
-    letter.style.top = `${letter.offsetTop + 20 * Math.sin(Math.abs(angle))}px`;
+    var letterX = letter.offsetLeft
+    var letterY = letter.offsetTop
+
+    var circle = document.getElementById('round');
+    var circleX = circle.offsetLeft
+    var circleY = circle.offsetTop
+
+    var dx = circleX - letterX;
+    var dy = circleY - letterY;
+    var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2))
+    letter.style.left = `${letter.offsetLeft + 60 * dx/dh}px`;
+    letter.style.top = `${letter.offsetTop + 20 * dy/dh}px`;
 
     // letter.style.left = `${letter.offsetLeft + randomNumber(1,100) * Math.cos(Math.abs(angle))}px`;
     // letter.style.top = `${letter.offsetTop + randomNumber(1,20) * Math.sin(Math.abs(angle))}px`;
@@ -52,8 +62,14 @@ startBtn.addEventListener('click', (event)=>{
         paragraph.setAttribute('id',alphabet);
         paragraph.setAttribute('class', 'letter');
         paragraph.innerText = alphabet;
+
         paragraph.style.left = "-10px";
         paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+
+        //get letters from right
+        paragraph.style.left = "1727px";
+        paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+
         this.alphabetArray.push(alphabet);
         
         var letterContainer = document.getElementById('letter-container');
@@ -75,11 +91,19 @@ startBtn.addEventListener('click', (event)=>{
     },1000)
 
     setInterval(() => {
-        this.alphabetArray.forEach((alphabet)=>{
-            if(checkForCollision(alphabet)){
-                alert("Game Over!!");
-            };
-        })
+        // this.alphabetArray.forEach((alphabet)=>{
+        //     if(checkForCollision(alphabet)){
+        //         alert("Game Over!!");
+        //     };
+            
+        // })
+
+        for(let i=0;i<this.alphabetArray.length;i++){
+            if(checkForCollision(this.alphabetArray[i])){
+                alert("game over!");
+            }
+            window.stop();
+        }
     }, 1000);
 });
 
@@ -91,7 +115,6 @@ setTimeout(() => {
         if(this.alphabetArray.includes(event.key)){
             console.log('exists');
             animateKey(event.key);
-
         }
         else{
             console.log('does not exist');
