@@ -8,3 +8,19 @@ function randomNumber(min, max) {
     return Math.random() * (max - min) + min; 
 }
 
+function animateKey(letter){
+
+    var letterDiv = document.getElementById('letter-container');
+    var paragraph = document.querySelector(`#${letter}`);
+
+    var x = paragraph.offsetLeft;
+    var y = paragraph.offsetTop;
+
+    paragraph.style.transition = "all 0.5s linear 0s";
+    paragraph.style.left = `${x-5}px`;
+    paragraph.style.top = `${y-5}px`;
+    paragraph.style.fontSize = `2em`;
+    paragraph.style.opacity = 0;
+
+    letterDiv.removeChild(paragraph);
+}

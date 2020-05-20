@@ -1,11 +1,3 @@
-// let circle = {
-
-//     circleObject: ()=> {return document.getElementById('round')},
-//     X :circleObject.offsetLeft,
-//     Y : circleObject.offsetTop
-// }
-
-
 class Letter{
 
     letter = null;
@@ -40,7 +32,7 @@ class Letter{
 
         letterContainerDiv.appendChild(paragraph);
 
-        this.letter = letter;     
+        this.letter = paragraph;     
 
     }
 
@@ -93,7 +85,32 @@ class Letter{
         //for right
         letter.style.left = `${letter.offsetLeft + 90 * dx/dh}px`;
         letter.style.top = `${letter.offsetTop + 40 * dy/dh}px`;
-    } 
+    }
+    
+    checkForCollision(letterElement){
+        
+        let circle1 = {
+            x: letterElement.offsetLeft,
+            y: letterElement.offsetTop,
+            radius:letterElement.offsetWidth / 2
+        }
+        
+        var circle = document.getElementById('round');
+    
+        let circle2 = {
+            x:circle.offsetLeft,
+            y:circle.offsetTop,
+            radius:circle.offsetWidth / 2
+        }
+    
+        let distanceX = circle2.x - circle1.x;
+        let distanceY = circle2.y - circle1.y;
+    
+        let sumOfRadii = circle1.radius + circle2.radius;
+    
+        if(Math.pow(distanceX,2) + Math.pow(distanceY,2) <= Math.pow(sumOfRadii,2)) return true;
+    
+    }
 
 }
 
