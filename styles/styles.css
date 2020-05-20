@@ -41,7 +41,7 @@ body{
 }
 .letter{
     margin: 0;
-    display:none;
+    display:block;
     position:fixed;
     color:navy;
     font-size: 2.3em;

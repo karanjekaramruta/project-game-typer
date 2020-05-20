@@ -1,49 +1,41 @@
-function calculateAngle(letter){
 
-    var letterX = letter.getBoundingClientRect().x;
-    var letterY = letter.getBoundingClientRect().y;
+
+function getLettersFromLeft(letter){
+
+    var letterX = letter.offsetLeft;
+    var letterY = letter.offsetTop;
 
     var circle = document.getElementById('round');
-    var circleX = circle.getBoundingClientRect().x;
-    var circleY = circle.getBoundingClientRect().y;
+    var circleX = circle.offsetLeft;
+    var circleY = circle.offsetTop;
 
     var dx = circleX - letterX;
     var dy = circleY - letterY;
+    var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2));
 
-    var angle = Math.atan2(dy,dx);
-
-    return angle;
-}
-
-function move(letter, angle){
-
-    var letterX = letter.offsetLeft
-    var letterY = letter.offsetTop
-
-    var circle = document.getElementById('round');
-    var circleX = circle.offsetLeft
-    var circleY = circle.offsetTop
-
-    var dx = circleX - letterX;
-    var dy = circleY - letterY;
-    var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2))
     letter.style.left = `${letter.offsetLeft + 60 * dx/dh}px`;
     letter.style.top = `${letter.offsetTop + 20 * dy/dh}px`;
 
-    // letter.style.left = `${letter.offsetLeft + randomNumber(1,100) * Math.cos(Math.abs(angle))}px`;
-    // letter.style.top = `${letter.offsetTop + randomNumber(1,20) * Math.sin(Math.abs(angle))}px`;
 }
 
+function getLettersFromRight(letter){
 
-//generate random smallcase letter (a-z)
-function generateRandomLetter(){
-    return String.fromCharCode(randomNumber(97,122));
+    var letterX = letter.offsetLeft;
+    var letterY = letter.offsetTop;
+
+    var circle = document.getElementById('round');
+    var circleX = circle.offsetLeft;
+    var circleY = circle.offsetTop;
+
+    var dx = circleX - letterX;
+    var dy = circleY - letterY;
+    var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2));
+
+    //for right
+    letter.style.left = `${letter.offsetLeft + 90 * dx/dh}px`;
+    letter.style.top = `${letter.offsetTop + 40 * dy/dh}px`;
 }
 
-// Function to generate random number  
-function randomNumber(min, max) {  
-    return Math.random() * (max - min) + min; 
-}
 
 var alphabetArray = [];
 var startBtn = document.getElementById('start');
@@ -63,12 +55,21 @@ startBtn.addEventListener('click', (event)=>{
         paragraph.setAttribute('class', 'letter');
         paragraph.innerText = alphabet;
 
-        paragraph.style.left = "-10px";
-        paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+        var randomNum = randomNumber(1,10);
 
-        //get letters from right
-        paragraph.style.left = "1727px";
-        paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+        if (randomNum <= 5) {
+        
+            //move from left
+            paragraph.style.left = "-10px";
+            paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+        } 
+        else{
+            
+            //move letters from right
+            paragraph.style.left = "1727px";
+            paragraph.style.top = `${Math.round(Math.random() * window.innerHeight)}px`;
+        }
+
 
         this.alphabetArray.push(alphabet);
         
@@ -83,20 +84,20 @@ startBtn.addEventListener('click', (event)=>{
         var letters = letterDiv.querySelectorAll('p');
     
         letters.forEach(letter =>{
-            var angle = calculateAngle(letter);
-            //console.log(angle);
             letter.style.display="block";
-            move(letter,angle);            
+            renderLetter(letter); 
         })
     },1000)
 
+    function renderLetter(letter){
+
+        var randomNum = randomNumber(1,10);
+
+        (randomNum <=5) ? getLettersFromLeft(letter) : getLettersFromRight(letter);             
+        
+    }
+
     setInterval(() => {
-        // this.alphabetArray.forEach((alphabet)=>{
-        //     if(checkForCollision(alphabet)){
-        //         alert("Game Over!!");
-        //     };
-            
-        // })
 
         for(let i=0;i<this.alphabetArray.length;i++){
             if(checkForCollision(this.alphabetArray[i])){
@@ -109,11 +110,8 @@ startBtn.addEventListener('click', (event)=>{
 
 setTimeout(() => {
     document.addEventListener('keydown', event=>{
-        console.log(event.key);
-        console.log(this.alphabetArray);
 
         if(this.alphabetArray.includes(event.key)){
-            console.log('exists');
             animateKey(event.key);
         }
         else{
@@ -132,8 +130,8 @@ function animateKey(letter){
     var y = paragraph.offsetTop;
 
     paragraph.style.transition = "all 0.5s linear 0s";
-    paragraph.style.left = `${x}-5px`;
-    paragraph.style.top = `${y}-5px`;
+    paragraph.style.left = `${x-5}px`;
+    paragraph.style.top = `${y-5}px`;
     paragraph.style.fontSize = `2em`;
     paragraph.style.opacity = 0;
 
