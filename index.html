@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typer Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
+
+    <div id="intro">
+        <h1>Bouncing Bubbles</h1>
+        <p>Burst as many letters as you can</p>
+        <p>Press keys matching bubbles on the screen and burst them</p>
+        <p>Avoid going them near fish, otherwise fish would trap them in his net</p>
+        <div>
+            <button id="start">Let's Play</button>
+        </div>
+    </div>
     
-    <!-- <p id="letter">a</p> -->
     <div id="letter-container">
 
     </div>
-    <div id="round"></div>
-    <button id="start">Start</button>
+    <div>
+        <img id="round" src="./images/cartoonfish.png" alt="">
+    </div>
+    <div id="scoreboard">
+        <span>Your Score: 0 </span>
+    </div>
+    <div id="gameover">
+        <h1>Game Over!</h1>
+        <h2>Your score is: </h2>
+        <p>Click on Play to start again</p>
+        <div>
+            <button id="start">Play Again</button>
+        </div>
+    </div>
 
     <script src="./js/game.js"></script>
     <script src="./js/letter.js"></script>

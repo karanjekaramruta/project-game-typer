@@ -8,18 +8,18 @@ class Game{
 
     start(){
 
-        setInterval(() => {
+        var intervalId_1 = setInterval(() => {
             var letter = new Letter();
             this.letters.push(letter);
             this.lettersTracker.push(letter.letter.innerText);
         }, 1000);
 
-        setInterval(() => {
+        var intervalId_2 = setInterval(() => {
             
             this.letters.forEach((letter)=>{
                 letter.move(letter.letter);
             })
-        }, 1000);
+        }, 10);
 
         setTimeout(() => {
             document.addEventListener('keydown', event=>{
@@ -34,10 +34,15 @@ class Game{
             });
         }, 1000);
 
-        setInterval(() => {
+        var intervalId_3 = setInterval(() => {
             this.letters.forEach((letter)=>{
                 if(letter.checkForCollision(letter.letter)){
-                    alert("game over");
+                    // stop all intervals
+                    clearInterval(intervalId_1);
+                    clearInterval(intervalId_2);
+                    clearInterval(intervalId_3);
+                    var gameOverDiv = document.getElementById('gameover');
+                    gameOverDiv.style.display = "flex";
                 }
             })
         }, 1000);
@@ -49,7 +54,11 @@ class Game{
 let game = new Game();
 
 document.getElementById('start').onclick = () => {
-    game.start();
 
+    var scoreBoard = document.getElementById("scoreboard");
+    scoreBoard.style.display = "flex";
+    var introDiv = document.getElementById("intro");
+    introDiv.style.display = "none";
+    game.start();
 
 };

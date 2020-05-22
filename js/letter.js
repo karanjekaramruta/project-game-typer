@@ -65,8 +65,8 @@ class Letter{
 
         var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2));
 
-        letter.style.left = `${letter.offsetLeft + 60 * dx/dh}px`;
-        letter.style.top = `${letter.offsetTop + 20 * dy/dh}px`;
+        letter.style.left = `${letter.offsetLeft + 3 * dx/dh}px`;
+        letter.style.top = `${letter.offsetTop + 1 * dy/dh}px`;
 
     }
 
@@ -83,8 +83,8 @@ class Letter{
         var dh = Math.sqrt(Math.pow(dx, 2)+ Math.pow(dy, 2));
 
         //for right
-        letter.style.left = `${letter.offsetLeft + 90 * dx/dh}px`;
-        letter.style.top = `${letter.offsetTop + 40 * dy/dh}px`;
+        letter.style.left = `${letter.offsetLeft + 3 * dx/dh}px`;
+        letter.style.top = `${letter.offsetTop + 1 * dy/dh}px`;
     }
     
     checkForCollision(letterElement){
