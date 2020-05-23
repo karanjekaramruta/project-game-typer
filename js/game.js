@@ -1,64 +1,104 @@
 class Game{
 
-    letters = [];
-    
-    letterContainerDiv = document.getElementById('letter-container');
+    constructor(){
 
-    lettersTracker = [];
+        this.gameOver = new Gameover();
+        this.scoreCard = new Scorecard(0);
+        this.score = this.scoreCard.score; 
+        this.letters = [];
+        this.lettersTracker = [];
+        this.gameState = false;
+        this.intervals = [];
+    }
 
     start(){
+        
+        this.intervals.push(
 
-        var intervalId_1 = setInterval(() => {
-            var letter = new Letter();
-            this.letters.push(letter);
-            this.lettersTracker.push(letter.letter.innerText);
-        }, 1000);
+            setInterval(() => {
+                this.renderLetters();
+            }, 1000),
 
-        var intervalId_2 = setInterval(() => {
-            
-            this.letters.forEach((letter)=>{
-                letter.move(letter.letter);
-            })
-        }, 10);
+            setInterval(() => {
+                this.moveLetters();
+            }, 10),
+
+            setInterval(() => {
+                this.checkCollision();
+            }, 1000)
+
+        )
 
         setTimeout(() => {
-            document.addEventListener('keydown', event=>{
-        
-                if(game.lettersTracker.includes(event.key)){
-                    animateKey(event.key);
-                }
-                else{
-                    console.log('does not exist');
-                }
-        
-            });
-        }, 1000);
-
-        var intervalId_3 = setInterval(() => {
-            this.letters.forEach((letter)=>{
-                if(letter.checkForCollision(letter.letter)){
-                    // stop all intervals
-                    clearInterval(intervalId_1);
-                    clearInterval(intervalId_2);
-                    clearInterval(intervalId_3);
-                    var gameOverDiv = document.getElementById('gameover');
-                    gameOverDiv.style.display = "flex";
-                }
-            })
+            this.validateKey();
         }, 1000);
 
     }
 
+    renderLetters(){
+        var letter = new Letter();
+        this.letters.push(letter);
+        this.lettersTracker.push(letter.letter.innerText);
+
+    }
+
+    moveLetters(){                   
+        this.letters.forEach((letter)=>{
+            letter.move(letter.letter);
+        })
+    }
+
+    validateKey(){
+        document.addEventListener('keydown', event=>{
+        
+            if(game.lettersTracker.includes(event.key)){                
+                this.scoreCard.render(++this.score);
+                animateKey(event.key);
+            }
+    
+        });
+    }
+
+    stop(){
+
+        this.intervals.forEach((interval)=>{
+            clearInterval(interval);
+        });
+
+        this.gameOver.render(this.score);
+        this.gameOver.removeAllLetters();
+        this.scoreCard = null;
+        this.game = null;
+        this.reload();
+    }
+
+    reload(){
+
+        document.addEventListener('keydown', event =>{
+            if(event.key === 'Enter'){
+                window.location.reload(true);
+            }
+        });
+    }
+
+    checkCollision(){
+        this.letters.forEach((letter)=>{
+            if(letter.checkForCollision(letter.letter)){    
+                this.stop();
+            }
+        });
+    }
+
 }
+
+
 
 let game = new Game();
 
 document.getElementById('start').onclick = () => {
 
-    var scoreBoard = document.getElementById("scoreboard");
-    scoreBoard.style.display = "flex";
-    var introDiv = document.getElementById("intro");
-    introDiv.style.display = "none";
+    game.scoreCard.render(0);
+    document.getElementById("intro").style.display = "none";
     game.start();
 
 };
