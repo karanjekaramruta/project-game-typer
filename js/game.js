@@ -51,8 +51,8 @@ class Game{
     validateKey(){
         document.addEventListener('keydown', event=>{
         
-            if(game.lettersTracker.includes(event.key)){                
-                this.scoreCard.render(++this.score);
+            if(game.lettersTracker.includes(event.key)){
+                this.scoreCard.render(++this.score);        
                 animateKey(event.key);
             }
     
@@ -90,7 +90,6 @@ class Game{
     }
 
 }
-
 
 
 let game = new Game();

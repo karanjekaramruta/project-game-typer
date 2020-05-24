@@ -3,35 +3,40 @@ body{
     margin:0;
     height:100vw;
     overflow: hidden;
-    background-image: url('../images/bg_water.jpg');
-    background-size: cover;
+    background-image: url('../images/water_2.gif');
+    background-size: contain;
     font-family: 'Happy Monkey', cursive;
 }
 
+/* Introduction screen styles */
 
-#round{
-    height: 200px;
-    width: 200px;
-    background-color: transparent;
-    border-radius: 50%;
-    border: 5px solid transparent;
+#intro{
+    background-color: white;
+    height: 100vw;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 5% 5%;
+    width: 500px;
     position: fixed;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 46%;
+    left: 30%;
+    text-align: center;
+    box-shadow: -1px 8px 24px -11px rgba(132,130,130,0.75);
 }
 
-#letter-container{
-    left:20px;
-    top:10px;
-    position: fixed;
+.title{
+    color: navy;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
 }
 
-#letter{
-    position: fixed;
-    font-size: 1.6em;
+.subtitle{
+    font-size: 1.4em;
+    font-weight: 500;
+    color: darkgoldenrod;
 }
-
 
 #start{
     left: 43%;
@@ -46,6 +51,30 @@ body{
     font-size: 1.6em;
     font-family: 'Happy Monkey', cursive;
 }
+
+/* center fish styles */
+
+#round{
+    height: 200px;
+    width: 200px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Letters styles */
+
+#letter-container{
+    left:20px;
+    top:10px;
+    position: fixed;
+}
+
+
 .letter{
     margin: 0;
     display:block;
@@ -73,26 +102,7 @@ body{
     );
 }
 
-.bubble {
-    border-radius: 5em;
-    box-shadow: 1px 1px 7px hsla(0, 0, 80%, 0.7);
-    height: 8em;
-    width: 8em;
-    cursor: pointer;
-    background-image: 
-       radial-gradient(ellipse at 75% 70%, 
-          hsla(0, 0%, 90%, 0.8), 
-          hsla(0, 0%, 90%, 0.15) 9%, 
-          hsla(0, 0%, 10%, 0.1) 90%,
-          hsla(0, 0%, 10%, 0.1)
-       ),
-       radial-gradient(ellipse at 25% 30%, 
-          hsla(0, 0%, 90%, 0.8), 
-          hsla(0, 0%, 60%, 0.2) 7%, 
-          hsla(0, 0%, 10%, 0.1) 90%,
-          hsla(0, 0%, 10%, 0.1)
-       );
- }
+/* Score card styles */
 
  #scorecard {
     position: fixed;
@@ -108,20 +118,8 @@ body{
     left: 42%;
 }
 
-#intro{
-    background-color: white;
-    height: 100vw;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    padding: 5% 5%;
-    width: 500px;
-    position: fixed;
-    top: 46%;
-    left: 30%;
-    text-align: center;
-}
 
+/* Game over screen styles */
 #gameover{
     background-color: white;
     height: 100vw;
@@ -135,4 +133,24 @@ body{
     left: 30%;
     text-align: center;
     z-index: -1;
+    box-shadow: -1px 8px 24px -11px rgba(132,130,130,0.75);
+}
+
+#gameover h1{
+    color:indianred;
+    font-size: 2.8em;
+}
+
+#gameover p{
+    margin:0;
+    font-size: 1.4em;
+    line-height: 2em;
+}
+
+#gameover span{
+    background-color: navy;
+    color: white;
+    padding: 2% 3%;
+    border-radius: 15%;
+    
 }

@@ -13,6 +13,10 @@ function animateKey(letter){
     var letterDiv = document.getElementById('letter-container');
     var paragraph = document.querySelector(`#${letter}`);
 
+    // var img = document.createElement('img');
+    // img.setAttribute('src', "./images/bubble.gif");
+    // img.setAttribute('class', "bubbleImg");
+
     var x = paragraph.offsetLeft;
     var y = paragraph.offsetTop;
 
@@ -23,4 +27,5 @@ function animateKey(letter){
     paragraph.style.opacity = 0;
 
     letterDiv.removeChild(paragraph);
+    // letterDiv.appendChild(img);
 }

@@ -5,7 +5,7 @@ class Gameover{
         var gameOverDiv = document.createElement('div');
         var gameoverHtml = `<h1>Game Over!</h1>
         <h2>Your score is: ${score}</h2>
-        <p>Click ENTER to play again</p>
+        <p>Click <span> ENTER </span>  <br> to play again !</p>
         `
         gameOverDiv.innerHTML = gameoverHtml;
         gameOverDiv.setAttribute('id', 'gameover');
@@ -19,8 +19,8 @@ class Gameover{
         containerDiv.querySelectorAll('p').forEach(n => n.remove());
     }
 
-    remove(){
-        var gameoverDiv = document.getElementById('gameover');
-        document.body.removeChild(gameoverDiv);
-    }
+    // remove(){
+    //     var gameoverDiv = document.getElementById('gameover');
+    //     document.body.removeChild(gameoverDiv);
+    // }
 }
