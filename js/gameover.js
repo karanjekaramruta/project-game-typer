@@ -2,8 +2,8 @@ class Gameover {
     render(score) {
         var gameOverDiv = document.createElement("div");
         var gameoverHtml = `<h1>GAME OVER!</h1>
-        <h2>You bursted ${score} bubbles </h2>
-        <p>Click <span> ENTER </span> to play again !</p>
+        <h2><span style="font-size: 25px;">&#127942;</span>You bursted ${score} bubble(s) <span style="font-size: 25px;">&#127942;</span></h2>
+        <p>Click <span class="key"> ENTER </span> to play again !</p>
         `;
         gameOverDiv.innerHTML = gameoverHtml;
         gameOverDiv.setAttribute("id", "gameover");

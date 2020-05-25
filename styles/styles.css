@@ -144,12 +144,18 @@ body {
     font-size: 2.8em;
 }
 
+#gameover h2{
+    font-size: 1.6em;
+    font-weight: 600;
+    color: navy;
+}
+
 #gameover p {
     font-size: 1.4em;
     line-height: 2em;
 }
 
-#gameover span {
+.key {
     background-color: navy;
     color: white;
     padding: 1% 3% 1% 4%;
