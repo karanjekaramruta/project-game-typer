@@ -1,26 +1,24 @@
-class Gameover{
-
-    render(score){
-
-        var gameOverDiv = document.createElement('div');
-        var gameoverHtml = `<h1>Game Over!</h1>
-        <h2>Your score is: ${score}</h2>
-        <p>Click <span> ENTER </span>  <br> to play again !</p>
-        `
+class Gameover {
+    render(score) {
+        var gameOverDiv = document.createElement("div");
+        var gameoverHtml = `<h1>GAME OVER!</h1>
+        <h2>You bursted ${score} bubbles </h2>
+        <p>Click <span> ENTER </span> to play again !</p>
+        `;
         gameOverDiv.innerHTML = gameoverHtml;
-        gameOverDiv.setAttribute('id', 'gameover');
+        gameOverDiv.setAttribute("id", "gameover");
         gameOverDiv.style.display = "flex";
 
         document.body.appendChild(gameOverDiv);
     }
 
-    removeAllLetters(){
+    removeAllLetters() {
         var containerDiv = document.getElementById("letter-container");
-        containerDiv.querySelectorAll('p').forEach(n => n.remove());
+        containerDiv.querySelectorAll("p").forEach((n) => n.remove());
     }
 
-    // remove(){
-    //     var gameoverDiv = document.getElementById('gameover');
-    //     document.body.removeChild(gameoverDiv);
-    // }
+    hideScoreCard() {
+        var scoreCard = document.getElementById("scorecard");
+        scoreCard.style.display = "none";
+    }
 }

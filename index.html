@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Typer Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
 
+  <body>
     <div id="intro">
-        <h1 class="title">Pop the bubbles</h1>
-        <p class="subtitle">The fish with net loves bubbles....
-
-        </p>
-        <p>Press alphabet keys matching bubbles to burst them</p>
-        <p>Fish would eat them all..so try to pop them before they get to the fish 
-            <span style='font-size:25px;'>&#128518;</span>
-        </p>
-        <div>
-            <button id="start">Let's Play</button>
-        </div>
+      <h1 class="title">Pop the bubbles</h1>
+      <h2 class="subtitle">The fish with net loves bubbles....</h2>
+      <p>Press alphabet keys matching bubbles to burst them</p>
+      <p>
+        Fish would eat them all..so try to pop them before they get to the fish
+        <span style="font-size: 25px;">&#128518;</span>
+      </p>
+      <div>
+        <button id="start">Let's Play</button>
+      </div>
     </div>
-    
-    <div id="letter-container">
 
-    </div>
+    <div id="letter-container"></div>
 
     <div>
-        <img id="round" src="./images/cartoonfish.gif" alt="">
+      <img id="round" src="./images/cartoonfish.gif" alt="" />
     </div>
-
-
 
     <script src="./js/scorecard.js"></script>
     <script src="./js/gameover.js"></script>
     <script src="./js/letter.js"></script>
     <script src="./js/helper.js"></script>
     <script src="./js/game.js"></script>
-</body>
+  </body>
 </html>
