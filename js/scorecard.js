@@ -1,20 +1,20 @@
 class Scorecard {
-    constructor(score) {
-        this.score = 0;
-    }
+  constructor(score) {
+    this.score = 0;
+  }
 
-    render() {
-        var scorecardHtml = `<p>Your Score: <span> ${this.score}</span> </p>`;
+  render() {
+    var scorecardHtml = `<p>Your Score: <span> ${this.score}</span> </p>`;
 
-        var scorecardDiv = document.createElement("div");
-        scorecardDiv.innerHTML = scorecardHtml;
-        scorecardDiv.setAttribute("id", "scorecard");
+    var scorecardDiv = document.createElement("div");
+    scorecardDiv.innerHTML = scorecardHtml;
+    scorecardDiv.setAttribute("id", "scorecard");
 
-        document.body.appendChild(scorecardDiv);
-    }
+    document.body.appendChild(scorecardDiv);
+  }
 
-    update() {
-        var spanElement = document.querySelector("#scorecard span");
-        spanElement.innerHTML = this.score;
-    }
+  update() {
+    var spanElement = document.querySelector("#scorecard span");
+    spanElement.innerHTML = this.score;
+  }
 }
